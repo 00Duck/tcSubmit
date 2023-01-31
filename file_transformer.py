@@ -92,5 +92,9 @@ class FileTransformer:
         return None
 
     def getHours(self, line: str) -> float:
-        hours = re.split(" ", line)[1]
-        return float(hours)
+        hours_list = re.split(" ", line)
+        if len(hours_list) != 2:
+            return float(0.0)
+        if hours_list[1] == "" or hours_list[1] == None or hours_list[1] == '\n':
+            return float(0.0)
+        return float(hours_list[1])

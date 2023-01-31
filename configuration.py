@@ -9,12 +9,11 @@ class Configuration:
         self.shortcuts = []
         self.user = ""
         self.password = ""
+        #gives us directory of THIS script
+        self.config_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)), "config.json")
     
     def load(self) -> Configuration:
-        #gives us directory of this script
-        file_dir = os.path.realpath(os.path.dirname(__file__))
-        config_dir = os.path.join(file_dir, "config.json")
-        with open(config_dir) as conf:
+        with open(self.config_dir) as conf:
             configJSON = json.load(conf)
             self.base_path = configJSON["base_path"]
             self.instance_name = configJSON["instance_name"]
@@ -22,3 +21,5 @@ class Configuration:
             self.user = configJSON["user"]
             self.password = configJSON["password"]
         return self
+    def open(self) -> None:
+        os.system(f"code {self.config_dir}")
