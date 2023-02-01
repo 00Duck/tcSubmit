@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.blake.tcsubmit</string>    
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/Cellar/python@3.10/3.10.9/bin/python3</string>
+    <string>/Users/blake/Documents/Programs/tcSubmit/auto_run.py</string>
+  </array>    
+  <key>RunAtLoad</key>
+  <true/>    
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.blake.tcsubmit.err</string>    
+  <key>StandardOutPath</key>
+  <string>/tmp/com.blake.tcsubmit.out</string>
+</dict>
+</plist>

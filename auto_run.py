@@ -27,7 +27,7 @@ class AutoRun:
             if current_stamp != self.cached_stamp:
                 Submit().execute("today")
                 self.cached_stamp = current_stamp
-            time.sleep(5)
+            time.sleep(15)
 
 def main():
     try:
