@@ -9,14 +9,13 @@ class FileSender:
 
     def upsert(self, timelogs):
         snc = SNConnector(self.config)
-        snc.endpoint = "/api/now/table/x_teth_isc_time_log"
         snc.session.auth = (self.config.user, self.config.password)
         if not snc.test():
             return False
         update_count = 0
         create_count = 0
         for timelog in timelogs:
-            log_sys_id =  self.getExistingLog(snc, timelog)
+            log_sys_id = self.getExistingLog(snc, timelog)
             if log_sys_id != None:
                 res = self.updateUpsert(snc, timelog.__dict__, log_sys_id)
                 if res:
@@ -51,19 +50,21 @@ class FileSender:
     #The get portion of the upsert function (check for existing log)
     def getExistingLog(self, snc: SNConnector, timelog: TimeLog):
         snc.verb = "GET"
+        snc.endpoint = "/api/now/table/x_teth_isc_time_log"
         ld = f"{timelog.log_date}@javascript:gs.dateGenerate('{timelog.log_date}','start')@javascript:gs.dateGenerate('{timelog.log_date}','end')"
-        snc.session.params = {
+        snc.params = {
             "sysparm_query": f"resource.user_name={timelog.resource}^project={timelog.project}^log_dateON{ld}",
             "sysparm_fields": "sys_id"
         }
-        
         resp = snc.call({})
-        snc.session.params = {} #reset here to make sure we don't use elsewhere
+        snc.params = None #reset here to make sure we don't use elsewhere
         if resp.status_code != 200:
             return None
         try:
             respJSON = json.loads(resp.text)
-            if len(respJSON["result"]) == 1:
+            if isinstance(respJSON["result"], dict):
+                return respJSON["result"]["sys_id"]
+            if isinstance(respJSON["result"], list) and len(respJSON["result"]) == 1:
                 return respJSON["result"][0]["sys_id"]
         except:
             return None

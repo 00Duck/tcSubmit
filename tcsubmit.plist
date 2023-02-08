@@ -10,7 +10,9 @@
     <string>/Users/blake/Documents/Programs/tcSubmit/auto_run.py</string>
   </array>    
   <key>RunAtLoad</key>
-  <true/>    
+  <true/>  
+  <key>KeepAlive</key>
+  <true/>  
   <key>StandardErrorPath</key>
   <string>/tmp/com.blake.tcsubmit.err</string>    
   <key>StandardOutPath</key>
