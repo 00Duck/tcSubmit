@@ -1,6 +1,7 @@
 from __future__ import annotations
 import json
 import os
+from dotenv import load_dotenv
 
 class Configuration:
     def __init__(self) -> None:
@@ -10,16 +11,19 @@ class Configuration:
         self.user = ""
         self.password = ""
         #gives us directory of THIS script
-        self.config_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)), "config.json")
+        self.local_dir = os.path.realpath(os.path.dirname(__file__))
+        self.config_path = os.path.join(self.local_dir, "config.json")
+        self.env_path = os.path.join(self.local_dir, ".env")
     
     def load(self) -> Configuration:
-        with open(self.config_dir) as conf:
+        load_dotenv(self.env_path)
+        with open(self.config_path) as conf:
             configJSON = json.load(conf)
             self.base_path = configJSON["base_path"]
             self.instance_name = configJSON["instance_name"]
             self.shortcuts = configJSON["shortcuts"]
-            self.user = configJSON["user"]
-            self.password = configJSON["password"]
+            self.user = os.environ.get("TC_USER")
+            self.password = os.environ.get("TC_PASS")
         return self
     def open(self) -> None:
         os.system(f"code {self.config_dir}")
