@@ -18,12 +18,12 @@ class Configuration:
     def load(self) -> Configuration:
         load_dotenv(self.env_path)
         with open(self.config_path) as conf:
-            configJSON = json.load(conf)
-            self.base_path = configJSON["base_path"]
-            self.instance_name = configJSON["instance_name"]
-            self.shortcuts = configJSON["shortcuts"]
+            config_json = json.load(conf)
+            self.base_path = config_json["base_path"]
+            self.instance_name = config_json["instance_name"]
+            self.shortcuts = config_json["shortcuts"]
             self.user = os.environ.get("TC_USER")
             self.password = os.environ.get("TC_PASS")
         return self
     def open(self) -> None:
-        os.system(f"code {self.config_dir}")
+        os.system(f"code {self.config_path}")

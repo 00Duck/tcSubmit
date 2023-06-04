@@ -5,8 +5,15 @@
         "PRH": "65ffc97147dfd9507a354e42846d433a",
         "BPO": "5b4218de875dd550b26e426acebb35cf",
         "NHAM": "5327b74f473cad107a354e42846d4347",
+        "AMINT": "559c846c87c2a91008c8c88d0ebb35a7",
+        "AMDOM": "aabc846c87c2a91008c8c88d0ebb3590",
         "unbil": "853723d64f33d2007d1d85c98310c7fb",
         "pto": "053723d64f33d2007d1d85c98310c7fb",
-        "sick": "813723d64f33d2007d1d85c98310c7fb"
+        "sick": "813723d64f33d2007d1d85c98310c7fb",
+        "holiday": "013723d64f33d2007d1d85c98310c7fb",
+        "ACTIVEVIEW": "c17c6d9f4709e1107a354e42846d4355",
+        "CDMFLEX": "ef2fea791baf49105b8cdca1b24bcbce",
+        "POMCUSTFLEX": "40aca1134749e1107a354e42846d43ed",
+        "BRFS": "30aa4f5e1b4b0510b29b4199bd4bcb93"
     }
 }
