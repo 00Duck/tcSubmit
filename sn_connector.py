@@ -14,8 +14,8 @@ class SNConnector:
     
     def test(self):
         try:
-            resp = self.session.post(url=f'{self.sn_url}/api/now/table/sys_user?sysparm_query=user_name={self.config.user}', headers=self.headers)
-            if resp.status_code != 201:
+            resp = self.session.get(url=f'{self.sn_url}/api/now/table/sys_user?sysparm_query=user_name={self.config.user}&sysparm_fields=user_name,sys_id', headers=self.headers)
+            if resp.status_code != 200:
                 print(f"Failed connection test to {self.config.instance_name}. Check config.json to ensure the credentials specified are correct.")
                 return False
         except Exception as err:

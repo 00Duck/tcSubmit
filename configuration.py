@@ -19,11 +19,11 @@ class Configuration:
         load_dotenv(self.env_path)
         with open(self.config_path) as conf:
             config_json = json.load(conf)
-            self.base_path = config_json["base_path"]
-            self.instance_name = config_json["instance_name"]
             self.shortcuts = config_json["shortcuts"]
-            self.user = os.environ.get("TC_USER")
-            self.password = os.environ.get("TC_PASS")
+            self.base_path = os.environ.get("BASE_PATH")
+            self.instance_name = os.environ.get("INSTANCE_NAME")
+            self.user = os.environ.get("SN_USER")
+            self.password = os.environ.get("SN_PASS")
         return self
     def open(self) -> None:
         os.system(f"code {self.config_path}")
