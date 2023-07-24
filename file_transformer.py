@@ -7,7 +7,6 @@ class FileTransformer:
     def __init__(self, config: Configuration) -> None:
         self.config = config
         self.timelogs = []
-        pass
 
     def process(self, user_input):
         #build path to be base_path/year/1-January/24.md
